@@ -1,8 +1,9 @@
+import java.util.Arrays;
 import java.util.Collection;
 
 public class MyArrayList <T>  {
-    private Object[] array; // array
-    private int size; //number of elements in the list
+    private static Object[] array; // array
+    private static int size; //number of elements in the list
 
     private final static int DEFAULT_SIZE = 10; // default size of array
 
@@ -74,8 +75,8 @@ public class MyArrayList <T>  {
     }
 
     public boolean contains(Object o) {
-        for(Object element: array) {
-            if(element.equals(o)) return true;
+        for(int i = 0; i < size; i++) {
+            if(array[i].equals(o)) return true;
         }
         return false;
     }
@@ -118,6 +119,7 @@ public class MyArrayList <T>  {
         for(int i = index + 1; i < size; i++) {
            array[i-1] = array[i];
         }
+        array[size - 1] = null;
         size--;
     }
 
@@ -147,11 +149,62 @@ public class MyArrayList <T>  {
 
 
     public Object[] toArray() {
-
+        Object[] result = new Object[size];
+        System.arraycopy(array, 0, result,0, size);
+        return result;
     }
 
 
-    private void resize() {
+    public static void main(String[] args) {
+        // Create a new MyArrayList
+        MyArrayList<Integer> myList = new MyArrayList<>();
+
+        // Test the add method
+        myList.add(1);
+        myList.add(2);
+        myList.add(3);
+        System.out.println(myList.size()); // Expected output: 3
+
+        // Test the add method with index
+        myList.add(4, 1);
+        System.out.println(myList.size()); // Expected output: 4
+        System.out.println(myList.get(1)); // Expected output: 4
+
+        // Test the contains method
+        System.out.println(myList.contains(3)); // Expected output: true
+        System.out.println(myList.contains(5)); // Expected output: false
+
+        // Test the get method
+        System.out.println(myList.get(2)); // Expected output: 2
+
+        // Test the indexOf method
+        System.out.println(myList.indexOf(2)); // Expected output: 2
+
+        // Test the isEmpty method
+        System.out.println(myList.isEmpty()); // Expected output: false
+        System.out.println(Arrays.toString(array) + " " + size);
+
+        // Test the lastIndexOf method
+        myList.add(2);
+        System.out.println(myList.lastIndexOf(2)); // Expected output: 4
+        System.out.println(Arrays.toString(array) + " " + size);
+
+        // Test the remove method
+        myList.remove(0);
+        System.out.println(myList.size()); // Expected output: 4
+        System.out.println(myList.get(0)); // Expected output: 4
+        System.out.println(Arrays.toString(array) + " " + size);
+
+        // Test the set method
+        myList.set(5, 1);
+        System.out.println(myList.get(1)); // Expected output: 5
+
+        System.out.println(Arrays.toString(array) + " " + size);
+        // Test the toArray method
+        Object[] arr = myList.toArray();
+        System.out.println(Arrays.toString(arr) + " " + size);
+
+        // Expected output: 4 5 3 2 2
 
     }
 }
