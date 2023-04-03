@@ -1,5 +1,7 @@
+package oop;
+
 public class Account { //blueprint for object account, model account of a customer
-    //Variables, attributes of the object Account
+    //Variables, attributes of the object OOP.Account
     private String id;
     private String name;
     private int balance = 0;
@@ -44,7 +46,7 @@ public class Account { //blueprint for object account, model account of a custom
         return this.balance;
     }
     public String toString() {
-        String result = "Account[id=" + getID() + ",name=" + getName() +
+        String result = "OOP.Account[id=" + getID() + ",name=" + getName() +
         ",balance=" + getBalance();
         return result;
     }

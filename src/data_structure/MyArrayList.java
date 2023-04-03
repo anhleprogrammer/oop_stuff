@@ -1,3 +1,5 @@
+package data_structure;
+
 import java.util.Arrays;
 import java.util.Collection;
 
@@ -156,7 +158,7 @@ public class MyArrayList <T>  {
 
 
     public static void main(String[] args) {
-        // Create a new MyArrayList
+        // Create a new DATA_STRUCTURE.MyArrayList
         MyArrayList<Integer> myList = new MyArrayList<>();
 
         // Test the add method

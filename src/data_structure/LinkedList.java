@@ -1,3 +1,5 @@
+package data_structure;
+
 public class LinkedList {
 
     Node head; // head of list
@@ -26,12 +28,12 @@ public class LinkedList {
         return list;
     }
 
-    // Method to print the LinkedList.
+    // Method to print the DATA_STRUCTURE.LinkedList.
     public static void printList(LinkedList list) {
 
     }
 
-    // Method to delete a node in the LinkedList by POSITION
+    // Method to delete a node in the DATA_STRUCTURE.LinkedList by POSITION
     public static LinkedList deleteAtPosition(LinkedList list, int index) {
 
         return list;

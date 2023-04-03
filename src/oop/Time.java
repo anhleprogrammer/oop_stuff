@@ -1,3 +1,5 @@
+package oop;
+
 public class Time {
     //Model a time instance
     //Instance variable
