@@ -2,20 +2,20 @@ package composition;
 
 public class Book {
     private String name;
-    private Author author;
+    private Author[] authors;
     private double price;
     private int quantity = 0;
 
-    public Book(String name, Author author, double price) {
+    public Book(String name, Author[] authors, double price) {
         this.name = name;
-        this.author = author;
+        this.authors = authors;
         this.price = price;
      }
 
     // Constructor
-    public Book(String name, Author author, double price, int quantity) {
+    public Book(String name, Author[] authors, double price, int quantity) {
         this.name = name;
-        this.author = author;
+        this.authors = authors;
         this.price = price;
         this.quantity = quantity;
     }
@@ -30,12 +30,12 @@ public class Book {
     }
 
     // Getter and Setter methods for author
-    public Author getAuthor() {
-        return author;
+    public Author[] getAuthor() {
+        return authors;
     }
 
-    public void setAuthor(Author author) {
-        this.author = author;
+    public void setAuthor(Author[] authors) {
+        this.authors = authors;
     }
 
     // Getter and Setter methods for price
@@ -58,30 +58,31 @@ public class Book {
 
     // toString method
     public String toString() {
-        return "Book Name: " + name + ", Author: " + author +
-                ", Price: $" + price + ", Quantity: " + quantity;
+        StringBuilder builder = new StringBuilder();
+        builder.append("Book[name=").append(name).append(", Authors={");
+        for(int i = 0; i < authors.length; i++) {
+            if(i == authors.length - 1) builder.append("[" + authors[i] + "]");
+            else builder.append("[" + authors[i]).append("], ");
+        }
+        builder.append("}").append(", Price=$").append(price).append(", Quantity=").append(quantity + "]");
+        return builder.toString();
     }
+    public String getAuthorsName() {
+        String result = "";
+        for(int i = 0; i < authors.length; i++) {
+            result += authors[i].getName() + ", " ;
+        }
+        return result.substring(result.length() - 2, result.length());
+    }
+
     public static void main(String args[]) {
-    // Construct an author instance
-        Author ahTeck = new Author("Tan Ah Teck", "ahteck@nowhere.com", 'm');
-        System.out.println(ahTeck);  // Author's toString()
+        // Declare and allocate an array of Authors
+        Author[] authors = new Author[2];
+        authors[0] = new Author("Tan Ah Teck", "AhTeck@somewhere.com", 'm');
+        authors[1] = new Author("Paul Tan", "Paul@nowhere.com", 'm');
 
-        Book dummyBook = new Book("Java for dummy", ahTeck, 19.95, 99);  // Test Book's Constructor
-        System.out.println(dummyBook);  // Test Book's toString()
-
-    // Test Getters and Setters
-        dummyBook.setPrice(29.95);
-        dummyBook.setQty(28);
-        System.out.println("name is: " + dummyBook.getName());
-        System.out.println("price is: " + dummyBook.getPrice());
-        System.out.println("qty is: " + dummyBook.getQty());
-        System.out.println("Author is: " + dummyBook.getAuthor());  // Author's toString()
-        System.out.println("Author's name is: " + dummyBook.getAuthor().getName());
-        System.out.println("Author's email is: " + dummyBook.getAuthor().getEmail());
-
-// Use an anonymous instance of Author to construct a Book instance
-        Book anotherBook = new Book("more Java",
-                new Author("Paul Tan", "paul@somewhere.com", 'm'), 29.95);
-        System.out.println(anotherBook);  // toString()
+// Declare and allocate a Book instance
+        Book javaDummy = new Book("Java for Dummy", authors, 19.99, 99);
+        System.out.println(javaDummy);  // toString()
     }
 }
