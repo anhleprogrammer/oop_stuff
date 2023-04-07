@@ -5,39 +5,44 @@ public class LinkedList {
     Node head; // head of list
 
     // Linked list Node.
-
-    static class Node {
-
+     class Node {
         int data;
         Node next;
-
         // Constructor
         Node(int d) {
             data = d;
             next = null;
         }
     }
-    public static void addNode(int d) {
-
+    public void addNode(int d) {
+        //when add node to list, go to last node and change the pointer
+        //we know a node is last node if next point to null
+        if (head == null) {
+            head = new Node(d);
+        } else {
+            Node curNode = head;
+            while (curNode.next != null) {
+                curNode = curNode.next;
+            }
+            curNode.next = new Node(d);
+        }
     }
 
     // Method to insert a new node
-    public static LinkedList insert(LinkedList list,
-                                    int data) {
+    public void insert(Node a, int index) {
 
-        return list;
     }
 
     // Method to print the DATA_STRUCTURE.LinkedList.
-    public static void printList(LinkedList list) {
+    public void printList(LinkedList list) {
 
     }
 
     // Method to delete a node in the DATA_STRUCTURE.LinkedList by POSITION
-    public static LinkedList deleteAtPosition(LinkedList list, int index) {
+    public LinkedList deleteAtPosition(LinkedList list, int index) {
 
         return list;
     }
-    public static void main(String[] args)
+    public void main(String[] args)
     {}
 }
