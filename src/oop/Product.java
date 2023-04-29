@@ -1,6 +1,8 @@
 package oop;
 
-public class Product {
+import java.util.Comparator;
+
+public class Product implements Comparable {
     private String name;
     private double price;
     private int quantity;
@@ -34,4 +36,19 @@ public class Product {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+
+    @Override
+    public int compareTo(Object o) {
+        //compare based on price
+        //return -1 if object of the class we implement less than the one in parameter
+        if(this.getClass() == o.getClass()) {
+            if(this.price < ((Product) o).getPrice()) {
+                return -1;
+            } else if(this.price ==  ((Product) o).getPrice()) {
+                return 0;
+            }
+        }
+        return 1;
+    }
 }
+
