@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class SortingAlgorithms {
     public static void main(String[] args) {
         int[] arr = new int[]{64, 25, 12, 22, 11};
-        selectionSort(arr);
+        insertionSort(arr);
         System.out.println(Arrays.toString(arr));
     }
     public static void selectionSort(int[] arr) {
@@ -30,6 +30,18 @@ public class SortingAlgorithms {
         //increment i after each swap to update sorted subarray
     }
     public static void insertionSort(int[] arr) {
-
+        int l = 1;
+        //left point at last sorted el
+        while(l < arr.length) {
+            int r = l;
+            while(r > 0 && arr[r] < arr[r-1]) {
+                //swap
+                int temp = arr[r-1];
+                arr[r-1] = arr[r];
+                arr[r] = temp;
+                r--;
+            }
+            l++;
+        }
     }
 }
